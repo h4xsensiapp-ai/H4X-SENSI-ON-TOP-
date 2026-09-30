@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H4X SENSI 🚀 Pro </title>
+
+<style>
+:root{
+  --bg:#071426;
+  --bg2:#0b1d35;
+  --card:rgba(15,35,61,.88);
+  --card2:#102846;
+  --blue:#2196f3;
+  --cyan:#36c5ff;
+  --gold:#ffd166;
+  --text:#f5f9ff;
+  --muted:#8fa8c5;
+  --line:rgba(255,255,255,.09);
+  --danger:#ff526d;
+  --success:#31d49a;
+  --shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 15% 10%,rgba(33,150,243,.25),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(54,197,255,.15),transparent 28%),
+    linear-gradient(135deg,#061121,#0a1c33 55%,#071426);
+  min-height:100vh;
+}
+
+button,input,select,textarea{font:inherit}
+
+button{
+  cursor:pointer;
+  border:0;
+}
+
+a{color:inherit;text-decoration:none}
+
+.container{
+  width:min(1180px,calc(100% - 28px));
+  margin:auto;
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(5,17,32,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav{
+  min-height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:-.6px;
+}
+
+.logo span{color:var(--cyan)}
+
+.nav-actions{
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.btn{
+  padding:11px 16px;
+  border-radius:12px;
+  color:white;
+  background:#153453;
+  border:1px solid var(--line);
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,#1678e8,#26b8ff);
+  box-shadow:0 10px 28px rgba(33,150,243,.25);
+}
+
+.btn.gold{
+  background:linear-gradient(135deg,#d99b23,#ffd166);
+  color:#111;
+}
+
+.btn.danger{
+  background:rgba(255,82,109,.14);
+  color:#ff8ca0;
+}
+
+.mobile-menu{
+  display:none;
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  background:#102946;
+  color:white;
+  font-size:22px;
+}
+
+.drawer{
+  position:fixed;
+  right:-310px;
+  top:0;
+  width:290px;
+  height:100%;
+  background:#08182b;
+  z-index:999;
+  padding:85px 20px 20px;
+  transition:.25s;
+  box-shadow:-20px 0 50px rgba(0,0,0,.4);
+}
+
+.drawer.open{right:0}
+
+.drawer a,
+.drawer button{
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:14px;
+  margin:6px 0;
+  border-radius:10px;
+  color:white;
+  background:#0d2745;
+}
+
+/* HERO */
+.hero{
+  padding:70px 0 40px;
+  text-align:center;
+}
+
+.badge{
+  display:inline-flex;
+  padding:7px 12px;
+  border-radius:99px;
+  background:rgba(33,150,243,.12);
+  border:1px solid rgba(54,197,255,.2);
+  color:#73d5ff;
+  font-size:12px;
+  font-weight:800;
+}
+
+.hero h1{
+  font-size:clamp(34px,6vw,66px);
+  line-height:1;
+  margin:18px 0;
+}
+
+.hero h1 span{
+  background:linear-gradient(90deg,#36c5ff,#fff,#ffd166);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:720px;
+  margin:auto;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* APP */
+.app{
+  padding:25px 0 70px;
+}
+
+.card{
+  background:linear-gradient(145deg,rgba(16,40,70,.92),rgba(8,27,48,.94));
+  border:1px solid var(--line);
+  border-radius:22px;
+  box-shadow:var(--shadow);
+}
+
+.generator{
+  padding:24px;
+}
+
+.tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:22px;
+}
+
+.tab{
+  flex:1;
+  padding:14px;
+  border-radius:13px;
+  background:#0b213b;
+  color:var(--muted);
+  border:1px solid var(--line);
+  font-weight:800;
+}
+
+.tab.active{
+  color:white;
+  background:linear-gradient(135deg,#1678e8,#20aef4);
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.field label{
+  display:block;
+  color:#a8c1dd;
+  font-size:12px;
+  font-weight:700;
+  margin:0 0 7px 3px;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  padding:13px;
+  color:white;
+  background:#081b31;
+  border:1px solid var(--line);
+  border-radius:12px;
+  outline:none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:#2aaeff;
+  box-shadow:0 0 0 3px rgba(42,174,255,.08);
+}
+
+.generate-row{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+}
+
+.generate-row .btn{flex:1}
+
+/* RESULT */
+.result{
+  margin-top:22px;
+  display:none;
+}
+
+.result.show{display:block}
+
+.result-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.result-head h2{margin:0}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.sensi{
+  padding:17px;
+  border-radius:16px;
+  background:#091d34;
+  border:1px solid var(--line);
+}
+
+.sensi small{color:var(--muted)}
+
+.value{
+  font-size:30px;
+  font-weight:900;
+  margin-top:7px;
+  color:#5ed0ff;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:16px;
+}
+
+/* SECTIONS */
+.section{
+  margin-top:22px;
+  padding:22px;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+  margin-bottom:16px;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:20px;
+}
+
+.muted{color:var(--muted)}
+
+.preset-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.preset{
+  padding:17px;
+  border-radius:15px;
+  background:#0a2039;
+  border:1px solid var(--line);
+}
+
+.preset h3{margin:0 0 7px}
+
+.preset p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+
+.hud{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.hud-item{
+  padding:17px;
+  border-radius:15px;
+  background:#091e35;
+}
+
+.bar{
+  height:8px;
+  border-radius:20px;
+  background:#152f4d;
+  overflow:hidden;
+  margin-top:12px;
+}
+
+.bar span{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg,#1884f2,#43d4ff);
+}
+
+.practice{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
+}
+
+.day{
+  padding:13px 6px;
+  border-radius:12px;
+  text-align:center;
+  background:#0b213a;
+  border:1px solid var(--line);
+  cursor:pointer;
+}
+
+.day.done{
+  background:rgba(49,212,154,.15);
+  border-color:rgba(49,212,154,.4);
+  color:#70e9bf;
+}
+
+/* AUTH */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(12px);
+  z-index:2000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+
+.overlay.show{display:flex}
+
+.auth-box{
+  width:min(430px,100%);
+  background:#0a1d34;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:24px;
+  box-shadow:var(--shadow);
+}
+
+.auth-box h2{margin-top:0}
+
+.auth-box .field{margin-bottom:12px}
+
+.auth-switch{
+  color:#55c9ff;
+  cursor:pointer;
+  font-weight:700;
+}
+
+/* FEEDBACK */
+.feedback-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.stars{
+  display:flex;
+  gap:6px;
+  align-items:center;
+  touch-action:manipulation;
+}
+
+.star{
+  appearance:none;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-appearance:none;
+  border:0;
+  background:transparent;
+  padding:4px 2px;
+  margin:0;
+  font-size:32px;
+  line-height:1;
+  color:#526b86;
+  cursor:pointer;
+  transition:transform .08s ease,color .12s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.star:hover,
+.star:focus-visible{
+  color:#ffd166;
+  transform:scale(1.08);
+  outline:none;
+}
+
+.star.active{
+  transform:scale(1.08);
+  color:#ffd166;
+}
+
+/* TOAST */
+.toast{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:5000;
+  padding:14px 18px;
+  background:#102d4d;
+  border:1px solid var(--line);
+  border-radius:13px;
+  box-shadow:var(--shadow);
+  display:none;
+}
+
+.toast.show{display:block}\n\n.admin-banner{display:none;margin:0 auto 18px;padding:13px 15px;border-radius:14px;background:rgba(255,209,102,.12);border:1px solid rgba(255,209,102,.3);color:#ffe7a3}\n.admin-banner.show{display:block}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--line);
+  padding:35px 0;
+  color:var(--muted);
+  text-align:center;
+}
+
+@media(max-width:850px){
+  .form-grid,
+  .result-grid,
+  .preset-grid,
+  .feedback-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .hud{grid-template-columns:1fr 1fr}
+  .practice{grid-template-columns:repeat(4,1fr)}
+}
+
+@media(max-width:650px){
+  .nav-actions{display:none}
+  .mobile-menu{display:block}
+
+  .hero{padding-top:45px}
+
+  .generator,
+  .section{padding:17px}
+
+  .form-grid,
+  .result-grid,
+  .preset-grid,
+  .feedback-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hud{grid-template-columns:1fr 1fr}
+
+  .generate-row{
+    flex-direction:column;
+  }
+
+  .practice{grid-template-columns:repeat(3,1fr)}
+}
+
+
+.feedback-users-count{
+  width:100%;
+  margin-top:10px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.feedback-users-count b{
+  color:var(--cyan);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">H4X<span> SENSI</span> PRO ʙᴜɪʟᴅ  ʙy ʜ4x ᴅᴇᴇᴩ </div>
+
+    <div class="nav-actions">
+      <button class="btn" onclick="scrollToId('generator')">Generator</button>
+      <button class="btn" onclick="scrollToId('presets')">Presets</button>
+      <button class="btn" onclick="scrollToId('feedback')">Feedback</button>
+      <button class="btn primary" id="authBtn" onclick="openAuth()">Login</button>
+    </div>
+
+    <button class="mobile-menu" onclick="toggleDrawer()">☰</button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <button onclick="scrollToId('generator');toggleDrawer()">🎯 Generator</button>
+  <button onclick="scrollToId('presets');toggleDrawer()">⚡ Presets</button>
+  <button onclick="scrollToId('hud');toggleDrawer()">🎮 HUD</button>
+  <button onclick="scrollToId('practice');toggleDrawer()">🔥 Practice</button>
+  <button onclick="scrollToId('feedback');toggleDrawer()">⭐ Feedback</button>
+  <button onclick="openAuth();toggleDrawer()">🔐 Login / Register</button>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge">🔥 H4X DEEP POWERED • SMART CALIBRATION</span>
+    <h1>ʙᴜɪʟᴅ  YOUR  <span>PERFECT SENSI</span></h1>
+    <p>
+      Generate optimized Free Fire MAX and BGMI/PUBG sensitivity
+      based on your device, FPS, RAM, playstyle and control setup.
+    </p>
+  </div>
+</section>
+
+<main class="container app">\n<div id="adminAnnouncement" class="admin-banner"></div>
+
+<section class="card generator" id="generator" data-feature="generator">
+
+  <div class="tabs">
+    <button class="tab active" id="ffTab" onclick="setGame('ff')">
+      Free Fire MAX
+    </button>
+    <button class="tab" id="bgmiTab" onclick="setGame('bgmi')">
+      BGMI / PUBG
+    </button>
+  </div>
+
+  <div class="form-grid">
+
+    <div class="field">
+      <label>Phone Brand</label>
+      <select id="brand">
+        <option>Samsung</option>
+        <option>OnePlus</option>
+        <option>Xiaomi</option>
+        <option>Redmi</option>
+        <option>Realme</option>
+        <option>Vivo</option>
+        <option>Oppo</option>
+        <option>iQOO</option>
+        <option>Motorola</option>
+        <option>Google Pixel</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Phone Model</label>
+      <input id="model" placeholder="Example: Galaxy A55">
+    </div>
+
+    <div class="field">
+      <label>RAM</label>
+      <select id="ram">
+        <option value="2">2 GB</option>
+        <option value="3">3 GB</option>
+        <option value="4" selected>4 GB</option>
+        <option value="6">6 GB</option>
+        <option value="8">8 GB</option>
+        <option value="12">12 GB</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Refresh / FPS</label>
+      <select id="fps">
+        <option value="60">60 FPS</option>
+        <option value="90">90 FPS</option>
+        <option value="120">120 FPS</option>
+        <option value="144">144 FPS</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Playstyle</label>
+      <select id="style">
+        <option value="balanced">Balanced</option>
+        <option value="rusher">Speed Drag Rusher</option>
+        <option value="onetap">One Tap Precision</option>
+        <option value="sniper">Sniper</option>
+        <option value="spray">Spray Control</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Finger Setup</label>
+      <select id="fingers">
+        <option value="2">2 Finger</option>
+        <option value="3">3 Finger</option>
+        <option value="4">4 Finger</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="generate-row">
+    <button class="btn primary" onclick="generate()">⚡ Generate Sensi</button>
+    <button class="btn" onclick="randomGenerate()">🎲 Random</button>
+    <button class="btn" onclick="saveProfile()">💾 Save Profile</button>
+  </div>
+
+  <div class="result" id="result">
+
+    <div class="result-head">
+      <h2>Generated Configuration</h2>
+      <span class="badge" id="gameBadge">FREE FIRE MAX</span>
+    </div>
+
+    <div class="result-grid" id="resultGrid"></div>
+
+    <div class="actions">
+      <button class="btn primary" onclick="copyConfig()">📋 Copy Config</button>
+      <button class="btn" onclick="downloadConfig()">⬇ Download</button>
+      <button class="btn" onclick="shareConfig()">↗ Share</button>
+      <button class="btn gold" onclick="tune(5)">＋ Fine Tune</button>
+      <button class="btn" onclick="tune(-5)">− Fine Tune</button>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="card section" id="presets" data-feature="presets">
+  <div class="section-title">
+    <h2>⚡ Premium Presets</h2>
+    <span class="muted">One-click calibration</span>
+  </div>
+
+  <div class="preset-grid">
+
+    <div class="preset">
+      <h3>🚀 Speed Drag Rusher</h3>
+      <p>Fast drag + aggressive close-range movement.</p>
+      <button class="btn primary" onclick="loadPreset('rusher')">Use</button>
+    </div>
+
+    <div class="preset">
+      <h3>🎯 One Tap Precision</h3>
+      <p>Headshot-focused control for precision players.</p>
+      <button class="btn primary" onclick="loadPreset('onetap')">Use</button>
+    </div>
+
+    <div class="preset">
+      <h3>🔭 Sniper Master</h3>
+      <p>Lower movement with stable long-range control.</p>
+      <button class="btn primary" onclick="loadPreset('sniper')">Use</button>
+    </div>
+
+    <div class="preset">
+      <h3>🏆 Ranked Balanced</h3>
+      <p>General-purpose configuration for ranked matches.</p>
+      <button class="btn primary" onclick="loadPreset('balanced')">Use</button>
+    </div>
+
+    <div class="preset">
+      <h3>🔥 Full Gyro Fragger</h3>
+      <p>High gyro response and aggressive combat setup.</p>
+      <button class="btn primary" onclick="loadPreset('rusher')">Use</button>
+    </div>
+
+    <div class="preset">
+      <h3>🔫 Laser Spray</h3>
+      <p>Designed around smoother recoil control.</p>
+      <button class="btn primary" onclick="loadPreset('spray')">Use</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="card section" id="hud" data-feature="hud">
+  <div class="section-title">
+    <h2>🎮 HUD Assistant</h2>
+    <span class="muted">Smart layout recommendation</span>
+  </div>
+
+  <div class="hud">
+
+    <div class="hud-item">
+      <b>Fire Button</b>
+      <div class="value" style="font-size:24px">52%</div>
+      <div class="bar"><span style="width:52%"></span></div>
+    </div>
+
+    <div class="hud-item">
+      <b>Joystick</b>
+      <div class="value" style="font-size:24px">58%</div>
+      <div class="bar"><span style="width:58%"></span></div>
+    </div>
+
+    <div class="hud-item">
+      <b>Scope</b>
+      <div class="value" style="font-size:24px">44%</div>
+      <div class="bar"><span style="width:44%"></span></div>
+    </div>
+
+    <div class="hud-item">
+      <b>Jump</b>
+      <div class="value" style="font-size:24px">42%</div>
+      <div class="bar"><span style="width:42%"></span></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="card section" id="practice" data-feature="practice">
+  <div class="section-title">
+    <h2>🔥 7-Day Practice Streak</h2>
+    <span class="muted">Tap after completing training</span>
+  </div>
+
+  <div class="practice" id="practiceGrid"></div>
+</section>
+
+<section class="card section" id="feedback" data-feature="feedback">
+
+  <div class="section-title">
+    <h2>⭐ Feedback Center</h2>
+    <span class="muted">Help improve the generator</span>
+  </div>
+
+  <div class="feedback-grid">
+
+    <div class="field">
+      <label>Game</label>
+      <select id="feedbackGame">
+        <option>Free Fire MAX</option>
+        <option>BGMI / PUBG</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Phone Model</label>
+      <input id="feedbackPhone" placeholder="Example: Redmi Note 13">
+    </div>
+
+    <div class="field">
+      <label>Rating</label>
+      <div class="stars" id="stars" role="radiogroup" aria-label="Feedback rating">
+        <button type="button" class="star" data-rate="1" aria-label="1 star" aria-checked="false">★</button>
+        <button type="button" class="star" data-rate="2" aria-label="2 stars" aria-checked="false">★</button>
+        <button type="button" class="star" data-rate="3" aria-label="3 stars" aria-checked="false">★</button>
+        <button type="button" class="star" data-rate="4" aria-label="4 stars" aria-checked="false">★</button>
+        <button type="button" class="star" data-rate="5" aria-label="5 stars" aria-checked="false">★</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Performance</label>
+      <select id="feedbackPerformance">
+        <option>Excellent</option>
+        <option>Good</option>
+        <option>Okay</option>
+        <option>Bad</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Feedback Type</label>
+      <select id="feedbackType">
+        <option>General Feedback</option>
+        <option>Bug Report</option>
+        <option>Feature Request</option>
+        <option>Sensitivity Complaint</option>
+        <option>Device Issue</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Your Message</label>
+      <textarea id="feedbackMessage" rows="4"
+        placeholder="Tell us what should be improved..."></textarea>
+    </div>
+
+  </div>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:15px">
+    <button type="button" class="btn primary" id="feedbackSubmitBtn"
+      onclick="submitFeedback()">
+      🚀 Submit Feedback
+    </button>
+
+    <div class="feedback-users-count" aria-label="Community size">
+      👥 <b>20K+ Users</b> are using H4X SENSI PRO
+    </div>
+
+    <button class="btn" id="feedbackTelegramBtn"
+      onclick="shareFeedbackToTelegram()" type="button">
+      ✈️ Send to Telegram 
+    </button>
+  </div>
+
+  <div id="feedbackStatus" class="muted" style="margin-top:10px"></div>
+  <div id="feedbackHistory" style="margin-top:18px"></div>
+
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    @ᴄᴏᴩyʀɪɢʜᴛ ʙy • ʜ4x ᴅᴇᴇᴩ 💀<br>
+    <small>
+      ᴛʜɪꜱ ᴛᴏᴏʟ ᴏɴʟy ʀᴇᴄᴏᴍᴍᴇɴᴅꜱ in-ɢᴀᴍᴇ  ꜱᴇᴛᴛɪɴɢꜱ. ɪᴛ ᴅᴏᴇꜱ ɴᴏᴛ  ᴍᴏᴅɪꜰy
+      ɢᴀᴍᴇ ꜰɪʟᴇꜱ, ɪɴᴊᴇᴄᴛ ꜱᴄʀɪᴩᴛꜱ ᴏʀ ʙyᴩᴀꜱꜱ ɢᴀᴍᴇ  ꜱᴇᴄᴜʀɪᴛy.
+    </small>
+  </div>
+</footer>
+
+<!-- AUTH MODAL -->
+
+<div class="overlay" id="authOverlay">
+
+  <div class="auth-box">
+
+    <h2 id="authTitle">Login</h2>
+    <p class="muted">Sign in to save profiles and send feedback.</p>
+
+    <div class="field">
+      <label>Email</label>
+      <input id="authEmail" type="email" placeholder="you@example.com">
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input id="authPassword" type="password" placeholder="••••••••">
+    </div>
+
+    <button class="btn primary" style="width:100%"
+      id="authSubmit" onclick="submitAuth()">
+      Login
+    </button>
+
+    <p style="margin-bottom:0">
+      <span class="muted" id="authSwitchText">Don't have an account?</span>
+      <span class="auth-switch" onclick="switchAuth()">Register</span>
+    </p>
+
+    <button class="btn" style="width:100%;margin-top:12px"
+      onclick="closeAuth()">Close</button>
+
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module">
+
+/* =========================================================
+   FIREBASE CONFIG
+   Replace these values with YOUR Firebase Web App config.
+   ========================================================= */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDH6Q2Jj9MzRfoEh2NztrQ3Qab1A-6XcjI",
+  authDomain: "h4x-sensi-999.firebaseapp.com",
+  databaseURL: "https://h4x-sensi-999-default-rtdb.firebaseio.com",
+  projectId: "h4x-sensi-999",
+  storageBucket: "h4x-sensi-999.firebasestorage.app",
+  messagingSenderId: "610786331188",
+  appId: "1:610786331188:web:9ebba5d3d17dd5cbb19861",
+  measurementId: "G-J5GPHK2D1T"
+};
+
+/* Firebase */
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  doc,
+  setDoc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+  serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+/* =========================================================
+   GLOBAL STATE
+   ========================================================= */
+
+let currentUser = null;
+let authMode = "login";
+let game = "ff";
+let generated = null;
+let selectedRating = 0;
+let siteSettings = {
+  maintenance:false,
+  showGenerator:true,
+  showPresets:true,
+  showHud:true,
+  showPractice:true,
+  showFeedback:true,
+  allowFeedback:true,
+  showAuth:true,
+  announcement:""
+};
+let feedbackUnsubscribe = null;
+let settingsUnsubscribe = null;
+
+/* =========================================================
+   UI
+   ========================================================= */
+
+window.scrollToId = function(id){
+  document.getElementById(id)?.scrollIntoView({
+    behavior:"smooth"
+  });
+};
+
+window.toggleDrawer = function(){
+  document.getElementById("drawer").classList.toggle("open");
+};
+
+window.openAuth = function(){
+  if(currentUser){
+    signOut(auth);
+    return;
+  }
+
+  document.getElementById("authOverlay").classList.add("show");
+};
+
+window.closeAuth = function(){
+  document.getElementById("authOverlay").classList.remove("show");
+};
+
+window.switchAuth = function(){
+  authMode = authMode === "login" ? "register" : "login";
+
+  document.getElementById("authTitle").textContent =
+    authMode === "login" ? "Login" : "Create Account";
+
+  document.getElementById("authSubmit").textContent =
+    authMode === "login" ? "Login" : "Register";
+
+  document.getElementById("authSwitchText").textContent =
+    authMode === "login"
+      ? "Don't have an account?"
+      : "Already have an account?";
+
+  document.querySelector(".auth-switch").textContent =
+    authMode === "login" ? "Register" : "Login";
+};
+
+function toast(message){
+  const el = document.getElementById("toast");
+  el.textContent = message;
+  el.classList.add("show");
+
+  setTimeout(()=>{
+    el.classList.remove("show");
+  },2800);
+}
+
+window.setGame = function(g){
+
+  game = g;
+
+  document.getElementById("ffTab")
+    .classList.toggle("active",g === "ff");
+
+  document.getElementById("bgmiTab")
+    .classList.toggle("active",g === "bgmi");
+
+  toast(g === "ff"
+    ? "Free Fire MAX selected"
+    : "BGMI / PUBG selected");
+};
+
+/* =========================================================
+   AUTH
+   ========================================================= */
+
+window.submitAuth = async function(){
+
+  const email =
+    document.getElementById("authEmail").value.trim();
+
+  const password =
+    document.getElementById("authPassword").value;
+
+  if(!email || password.length < 6){
+    toast("Enter a valid email and 6+ character password.");
+    return;
+  }
+
+  try{
+
+    if(authMode === "register"){
+
+      const credential =
+        await createUserWithEmailAndPassword(
+          auth,email,password
+        );
+
+      await setDoc(
+        doc(db,"users",credential.user.uid),
+        {
+          uid:credential.user.uid,
+          email:credential.user.email,
+          role:"user",
+          createdAt:serverTimestamp()
+        },
+        {merge:true}
+      );
+
+      toast("Account created successfully.");
+
+    }else{
+
+      await signInWithEmailAndPassword(
+        auth,email,password
+      );
+
+      toast("Login successful.");
+    }
+
+    closeAuth();
+
+  }catch(error){
+
+    console.error(error);
+
+    const messages = {
+      "auth/invalid-credential":"Invalid email or password.",
+      "auth/email-already-in-use":"Email already registered.",
+      "auth/weak-password":"Password must contain at least 6 characters.",
+      "auth/invalid-email":"Invalid email address."
+    };
+
+    toast(messages[error.code] || error.message);
+  }
+};
+
+onAuthStateChanged(auth,async(user)=>{
+
+  currentUser = user;
+
+  const authBtn =
+    document.getElementById("authBtn");
+
+  if(user){
+
+    authBtn.textContent = "Logout";
+
+    await ensureUserDocument();
+
+    loadFeedbackHistory();
+    retryQueuedFeedback();
+
+  }else{
+
+    authBtn.textContent = "Login";
+
+    if(feedbackUnsubscribe){ feedbackUnsubscribe(); feedbackUnsubscribe=null; }
+
+    document.getElementById("feedbackHistory").innerHTML = `<p class="muted">
+        Login to view your previous feedback.
+      </p>`;
+  }
+});
+
+async function ensureUserDocument(){
+
+  if(!currentUser)return;
+
+  const ref =
+    doc(db,"users",currentUser.uid);
+
+  const snap = await getDoc(ref);
+
+  if(!snap.exists()){
+
+    await setDoc(ref,{
+      uid:currentUser.uid,
+      email:currentUser.email,
+      role:"user",
+      createdAt:serverTimestamp()
+    });
+  }
+}
+
+/* =========================================================
+   SENSITIVITY ENGINE
+   ========================================================= */
+
+window.generate = function(){
+
+  if(game === "ff"){
+    generateFF();
+  }else{
+    generateBGMI();
+  }
+
+  renderConfig();
+};
+
+function generateFF(){
+
+  const ram =
+    Number(document.getElementById("ram").value);
+
+  const fps =
+    Number(document.getElementById("fps").value);
+
+  const style =
+    document.getElementById("style").value;
+
+  const fingers =
+    Number(document.getElementById("fingers").value);
+
+  const baseMap = {
+    2:[196,192,188,180,115,52],
+    3:[190,186,182,175,110,50],
+    4:[182,178,174,168,104,48],
+    6:[174,172,168,160,98,46],
+    8:[166,164,160,154,92,44],
+    12:[158,156,152,146,88,42]
+  };
+
+  let v =
+    [...(baseMap[ram] || baseMap[4])];
+
+  const styles = {
+    balanced:[0,0,0,0,0,0],
+    rusher:[12,7,0,0,-12,0],
+    onetap:[8,10,2,0,0,0],
+    sniper:[-12,-5,-2,0,24,2],
+    spray:[-4,-3,-2,-2,-2,4]
+  };
+
+  const m =
+    styles[style] || styles.balanced;
+
+  v = v.map((x,i)=>x+m[i]);
+
+  if(fps === 90){
+    v[0]+=3;
+    v[1]+=2;
+  }
+
+  if(fps === 120){
+    v[0]+=6;
+    v[1]+=3;
+  }
+
+  if(fps === 144){
+    v[0]+=8;
+    v[1]+=4;
+  }
+
+  if(fingers === 3){
+    v[0]-=2;
+    v[5]+=1;
+  }
+
+  if(fingers === 4){
+    v[0]-=4;
+    v[5]+=2;
+  }
+
+  v = v.map(x=>Math.max(1,Math.min(200,Math.round(x))));
+
+  generated = {
+    game:"Free Fire MAX",
+    values:{
+      "General":v[0],
+      "Red Dot":v[1],
+      "2x Scope":v[2],
+      "4x Scope":v[3],
+      "Sniper":v[4],
+      "Fire Button":v[5]
+    }
+  };
+}
+
+function generateBGMI(){
+
+  const ram =
+    Number(document.getElementById("ram").value);
+
+  const fps =
+    Number(document.getElementById("fps").value);
+
+  const style =
+    document.getElementById("style").value;
+
+  const fingers =
+    Number(document.getElementById("fingers").value);
+
+  let gyro =
+    [380,360,330,275,210,140,80];
+
+  let ads =
+    [100,95,90,85,75,55,40];
+
+  let cam =
+    [120,115,110,100,90,70,50];
+
+  let fpsAdd = 0;
+
+  if(fps===90)fpsAdd=9;
+  if(fps===120)fpsAdd=18;
+  if(fps===144)fpsAdd=22;
+
+  gyro = gyro.map(x=>x+fpsAdd);
+  ads = ads.map(x=>x+Math.round(fpsAdd/3));
+  cam = cam.map(x=>x+Math.round(fpsAdd/3));
+
+  if(ram>=8){
+    gyro=gyro.map(x=>x-8);
+  }
+
+  if(ram<=3){
+    gyro=gyro.map(x=>x+8);
+  }
+
+  if(fingers===4){
+    gyro=gyro.map(x=>x+8);
+  }
+
+  if(fingers===2){
+    gyro=gyro.map(x=>x-10);
+  }
+
+  if(style==="rusher"){
+    gyro=gyro.map(x=>x+10);
+  }
+
+  if(style==="sniper"){
+    gyro=gyro.map(x=>x-12);
+  }
+
+  if(style==="spray"){
+    gyro=gyro.map(x=>x+5);
+  }
+
+  generated = {
+    game:"BGMI / PUBG",
+    values:{
+      "Gyro No Scope":gyro[0],
+      "Gyro Red Dot":gyro[1],
+      "Gyro 2x":gyro[2],
+      "Gyro 3x":gyro[3],
+      "Gyro 4x":gyro[4],
+      "Gyro 6x":gyro[5],
+      "Gyro 8x":gyro[6],
+      "ADS No Scope":ads[0],
+      "ADS Red Dot":ads[1],
+      "Camera No Scope":cam[0]
+    }
+  };
+}
+
+function renderConfig(){
+
+  if(!generated)return;
+
+  const grid =
+    document.getElementById("resultGrid");
+
+  grid.innerHTML = "";
+
+  Object.entries(generated.values)
+  .forEach(([name,value])=>{
+
+    const div =
+      document.createElement("div");
+
+    div.className="sensi";
+
+    div.innerHTML = `
+      <small>${escapeHTML(name)}</small>
+      <div class="value">${value}</div>
+    `;
+
+    grid.appendChild(div);
+  });
+
+  document.getElementById("gameBadge").textContent =
+    generated.game.toUpperCase();
+
+  document.getElementById("result")
+    .classList.add("show");
+}
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+    .replace(/[&<>"']/g,c=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[c]));
+}
+
+/* =========================================================
+   CONFIG ACTIONS
+   ========================================================= */
+
+function configText(){
+
+  if(!generated)return "";
+
+  let text =
+    `H4XSENSI  Pro\n${generated.game}\n\n`;
+
+  Object.entries(generated.values)
+    .forEach(([name,value])=>{
+      text += `${name}: ${value}\n`;
+    });
+
+  return text;
+}
+
+async function copyText(text){
+
+  try{
+
+    if(navigator.clipboard &&
+       window.isSecureContext){
+
+      await navigator.clipboard.writeText(text);
+
+    }else{
+
+      const area =
+        document.createElement("textarea");
+
+      area.value=text;
+      area.style.position="fixed";
+      area.style.opacity="0";
+
+      document.body.appendChild(area);
+      area.focus();
+      area.select();
+
+      document.execCommand("copy");
+
+      area.remove();
+    }
+
+    toast("Configuration copied!");
+
+  }catch(e){
+
+    toast("Copy blocked by browser. Long-press and copy manually.");
+  }
+}
+
+window.copyConfig = function(){
+
+  if(!generated){
+    toast("Generate a configuration first.");
+    return;
+  }
+
+  copyText(configText());
+};
+
+window.shareConfig = async function(){
+
+  if(!generated)return;
+
+  const text=configText();
+
+  try{
+
+    if(navigator.share){
+
+      await navigator.share({
+        title:"H4XSENSI  Pro",
+        text
+      });
+
+    }else{
+
+      copyText(text);
+    }
+
+  }catch(e){}
+};
+
+window.downloadConfig = function(){
+
+  if(!generated)return;
+
+  const blob =
+    new Blob([configText()],{
+      type:"text/plain"
+    });
+
+  const url =
+    URL.createObjectURL(blob);
+
+  const a =
+    document.createElement("a");
+
+  a.href=url;
+  a.download="sensi-config.txt";
+  a.click();
+
+  URL.revokeObjectURL(url);
+};
+
+window.tune = function(amount){
+
+  if(!generated)return;
+
+  Object.keys(generated.values)
+    .forEach(key=>{
+
+      generated.values[key] =
+        Math.max(
+          1,
+          Math.min(
+            400,
+            generated.values[key]+amount
+          )
+        );
+
+    });
+
+  renderConfig();
+
+  toast(
+    amount > 0
+      ? "Sensitivity increased."
+      : "Sensitivity reduced."
+  );
+};
+
+window.randomGenerate = function(){
+
+  const styles =
+    ["balanced","rusher","onetap","sniper","spray"];
+
+  document.getElementById("style").value =
+    styles[Math.floor(Math.random()*styles.length)];
+
+  const fpsValues=[60,90,120,144];
+
+  document.getElementById("fps").value =
+    fpsValues[Math.floor(Math.random()*fpsValues.length)];
+
+  generate();
+};
+
+/* =========================================================
+   PRESETS
+   ========================================================= */
+
+window.loadPreset = function(style){
+
+  document.getElementById("style").value=style;
+
+  generate();
+
+  toast("Preset applied.");
+};
+
+/* =========================================================
+   SAVE PROFILE → FIRESTORE
+   ========================================================= */
+
+window.saveProfile = async function(){
+
+  if(!currentUser){
+
+    openAuth();
+
+    toast("Login first to save your profile.");
+
+    return;
+  }
+
+  if(!generated){
+
+    toast("Generate a configuration first.");
+
+    return;
+  }
+
+  try{
+
+    await addDoc(
+      collection(db,"profiles"),
+      {
+        uid:currentUser.uid,
+        email:currentUser.email,
+        game:generated.game,
+        brand:document.getElementById("brand").value,
+        model:document.getElementById("model").value,
+        ram:Number(document.getElementById("ram").value),
+        fps:Number(document.getElementById("fps").value),
+        style:document.getElementById("style").value,
+        fingers:Number(document.getElementById("fingers").value),
+        values:generated.values,
+        createdAt:serverTimestamp()
+      }
+    );
+
+    toast("Profile saved to Firebase.");
+
+  }catch(error){
+
+    console.error(error);
+    toast("Could not save profile.");
+  }
+};
+
+/* =========================================================
+   FEEDBACK
+   ========================================================= */
+
+const TELEGRAM_USERNAME = "YOUR_TELEGRAM_USERNAME";
+
+function setFeedbackStatus(message, type=""){
+  const el = document.getElementById("feedbackStatus");
+  if(!el) return;
+
+  el.textContent = message;
+  el.style.color =
+    type === "error" ? "#ff8ca0" :
+    type === "success" ? "#31d49a" :
+    "var(--muted)";
+}
+
+function getFeedbackPayload(){
+  const message =
+    document.getElementById("feedbackMessage")?.value.trim() || "";
+
+  return {
+    game:document.getElementById("feedbackGame")?.value || "",
+    phoneModel:document.getElementById("feedbackPhone")?.value.trim() || "",
+    rating:Number(selectedRating || 0),
+    performance:document.getElementById("feedbackPerformance")?.value || "",
+    type:document.getElementById("feedbackType")?.value || "",
+    message
+  };
+}
+
+function buildTelegramFeedbackText(data){
+  return [
+    "⭐ H4X SENSI PRO — New Feedback",
+    "",
+    `User: ${currentUser?.email || "Guest"}`,
+    `Game: ${data.game || "-"}`,
+    `Phone: ${data.phoneModel || "-"}`,
+    `Rating: ${data.rating}/5`,
+    `Performance: ${data.performance || "-"}`,
+    `Type: ${data.type || "-"}`,
+    "",
+    "Message:",
+    data.message || "-"
+  ].join("\n");
+}
+
+window.shareFeedbackToTelegram = function(){
+  const data = getFeedbackPayload();
+
+  if(!data.message){
+    setFeedbackStatus("Write your feedback message first.", "error");
+    toast("Write your feedback first.");
+    return;
+  }
+
+  if(!data.rating){
+    setFeedbackStatus("Select a rating first.", "error");
+    toast("Please select a rating.");
+    return;
+  }
+
+  const text = buildTelegramFeedbackText(data);
+
+  /*
+    Telegram's share URL opens Telegram with the message prepared.
+    The user still has to choose/send the chat.
+  */
+  const url =
+    `https://t.me/share/url?url=&text=${encodeURIComponent(text)}`;
+
+  window.open(url, "_blank", "noopener,noreferrer");
+};
+
+function renderFeedbackStars(){
+  document.querySelectorAll("#stars .star").forEach(star=>{
+    const rate = Number(star.dataset.rate);
+    const active = rate <= selectedRating;
+    star.classList.toggle("active", active);
+    star.setAttribute("aria-checked", active && rate === selectedRating ? "true" : "false");
+  });
+}
+
+function selectFeedbackRating(rate){
+  selectedRating = Math.max(0, Math.min(5, Number(rate) || 0));
+  renderFeedbackStars();
+  if(selectedRating){
+    setFeedbackStatus(`⭐ Rating selected: ${selectedRating}/5`);
+  }
+}
+
+/* Event delegation makes the rating work reliably on mobile/touch too. */
+document.getElementById("stars")?.addEventListener("click", event=>{
+  const star = event.target.closest(".star");
+  if(!star) return;
+  event.preventDefault();
+  selectFeedbackRating(star.dataset.rate);
+});
+
+document.getElementById("stars")?.addEventListener("keydown", event=>{
+  const star = event.target.closest(".star");
+  if(!star) return;
+  const current = Number(star.dataset.rate) || 1;
+  if(event.key === "ArrowRight" || event.key === "ArrowUp"){
+    event.preventDefault();
+    selectFeedbackRating(Math.min(5, current + 1));
+  }else if(event.key === "ArrowLeft" || event.key === "ArrowDown"){
+    event.preventDefault();
+    selectFeedbackRating(Math.max(1, current - 1));
+  }
+});
+
+renderFeedbackStars();
+
+function feedbackFirebaseError(error){
+  const code = error?.code || "";
+
+  const messages = {
+    "permission-denied":
+      "Firebase permission denied. Check Firestore Security Rules.",
+    "failed-precondition":
+      "Firestore needs a required index or database configuration.",
+    "unavailable":
+      "Firebase is temporarily unavailable. Check your internet connection.",
+    "network-request-failed":
+      "Network error. Check your internet connection.",
+    "unauthenticated":
+      "Your login session expired. Please login again.",
+    "deadline-exceeded":
+      "Firebase took too long to respond. Please try again.",
+    "resource-exhausted":
+      "Firebase quota/rate limit was reached. Please try again later."
+  };
+
+  return messages[code] ||
+    (error?.message
+      ? `Feedback could not be saved: ${error.message}`
+      : "Feedback could not be saved. Please try again.");
+}
+
+window.submitFeedback = async function(){
+  const btn = document.getElementById("feedbackSubmitBtn");
+
+  if(!siteSettings.allowFeedback){
+    setFeedbackStatus("Feedback submissions are currently disabled by admin.", "error");
+    toast("Feedback is currently disabled.");
+    return;
+  }
+
+  if(!currentUser){
+    setFeedbackStatus("Please login before submitting feedback.", "error");
+    openAuth();
+    toast("Login first to submit feedback.");
+    return;
+  }
+
+  const data = getFeedbackPayload();
+
+  if(!data.rating){
+    setFeedbackStatus("Please select a 1–5 star rating.", "error");
+    toast("Please select a rating.");
+    return;
+  }
+
+  if(!data.message){
+    setFeedbackStatus("Please write your feedback message.", "error");
+    toast("Please write your feedback.");
+    document.getElementById("feedbackMessage")?.focus();
+    return;
+  }
+
+  if(data.message.length < 3){
+    setFeedbackStatus("Feedback message is too short.", "error");
+    toast("Write a little more feedback.");
+    return;
+  }
+
+  try{
+    if(btn){
+      btn.disabled = true;
+      btn.textContent = "⏳ Sending...";
+      btn.style.opacity = ".7";
+    }
+
+    // Generate the Firestore document ID locally first.
+    // This lets the UI finish immediately instead of waiting for addDoc's round-trip.
+    const feedbackRef = doc(collection(db,"feedback"));
+    const payload = {
+      uid:currentUser.uid,
+      email:currentUser.email || "",
+      game:data.game,
+      phoneModel:data.phoneModel,
+      rating:data.rating,
+      performance:data.performance,
+      type:data.type,
+      message:data.message,
+      generatedSensi:generated ? generated.values : null,
+      status:"New",
+      adminReply:"",
+      createdAt:serverTimestamp()
+    };
+
+    // Optimistic UI: reset the form immediately.
+    document.getElementById("feedbackMessage").value = "";
+    document.getElementById("feedbackPhone").value = "";
+    selectedRating = 0;
+    renderFeedbackStars();
+
+    setFeedbackStatus("✓ Feedback submitted. Saving in background…", "success");
+    toast("Feedback submitted.");
+
+    if(btn){
+      btn.textContent = "✓ Submitted";
+      setTimeout(()=>{
+        btn.disabled = false;
+        btn.textContent = "🚀 Submit Feedback";
+        btn.style.opacity = "1";
+      }, 900);
+    }
+
+    // IMPORTANT: Do NOT await Firebase here. The button must finish instantly.
+    // Firebase save runs in the background so a slow network cannot block the UI.
+    setDoc(feedbackRef, payload)
+      .then(()=>{
+        console.log("Feedback saved:", feedbackRef.id);
+        setFeedbackStatus("✓ Feedback saved successfully.", "success");
+
+        if(TELEGRAM_USERNAME && TELEGRAM_USERNAME !== "YOUR_TELEGRAM_USERNAME"){
+          shareSavedFeedbackToTelegram({...data,id:feedbackRef.id});
+        }
+      })
+      .catch(error=>{
+        console.error("Background feedback save failed:", error);
+
+        // Keep a local copy so a temporary network/Firebase problem does not
+        // make the user's feedback disappear. It can be retried later.
+        try{
+          const queue = JSON.parse(localStorage.getItem("h4x_feedback_queue") || "[]");
+          queue.push({id:feedbackRef.id, payload:{...payload, createdAt:null}});
+          localStorage.setItem("h4x_feedback_queue", JSON.stringify(queue.slice(-20)));
+        }catch(queueError){
+          console.warn("Could not queue feedback locally:", queueError);
+        }
+
+        const msg = feedbackFirebaseError(error);
+        setFeedbackStatus("✓ Submitted on this device. Firebase is temporarily unavailable; it will be retried.", "success");
+        console.warn(msg);
+      });
+
+  }catch(error){
+    console.error("Feedback submission error:", error);
+    const msg = feedbackFirebaseError(error);
+    setFeedbackStatus(msg, "error");
+    toast("Firebase save failed. Please try again.");
+    if(btn){
+      btn.disabled = false;
+      btn.textContent = "🚀 Submit Feedback";
+      btn.style.opacity = "1";
+    }
+  }
+};
+function shareSavedFeedbackToTelegram(data){
+  const text = buildTelegramFeedbackText(data);
+  const url =
+    `https://t.me/share/url?url=&text=${encodeURIComponent(text)}`;
+
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
+async function retryQueuedFeedback(){
+  let queue=[];
+  try{
+    queue=JSON.parse(localStorage.getItem("h4x_feedback_queue") || "[]");
+  }catch(e){ return; }
+  if(!Array.isArray(queue) || !queue.length || !currentUser) return;
+
+  const remaining=[];
+  for(const item of queue){
+    try{
+      const ref = doc(db,"feedback",item.id);
+      const payload = {...item.payload, uid:currentUser.uid, email:currentUser.email || "", createdAt:serverTimestamp()};
+      await setDoc(ref,payload,{merge:true});
+    }catch(e){
+      remaining.push(item);
+    }
+  }
+  try{ localStorage.setItem("h4x_feedback_queue", JSON.stringify(remaining.slice(-20))); }catch(e){}
+}
+
+function loadFeedbackHistory(){
+  if(!currentUser) return;
+
+  const box = document.getElementById("feedbackHistory");
+  if(!box) return;
+
+  if(feedbackUnsubscribe){
+    feedbackUnsubscribe();
+    feedbackUnsubscribe = null;
+  }
+
+  box.innerHTML = `<p class="muted">Loading your feedback...</p>`;
+
+  const q = query(
+    collection(db,"feedback"),
+    where("uid","==",currentUser.uid)
+  );
+
+  feedbackUnsubscribe = onSnapshot(q,(snapshot)=>{
+    const items = snapshot.docs.map(docSnap=>({
+      id:docSnap.id,
+      ...docSnap.data()
+    }));
+
+    items.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
+
+    if(!items.length){
+      box.innerHTML = `<p class="muted">No feedback submitted yet.</p>`;
+      return;
+    }
+
+    box.innerHTML =
+      `<h3>Your Feedback</h3>` +
+      items.map(item=>`
+        <div class="sensi" style="margin-top:9px">
+          <b>${escapeHTML(item.type || "Feedback")}</b>
+          <div style="color:#ffd166;margin-top:4px">
+            ${"★".repeat(Number(item.rating || 0))}
+          </div>
+          <p class="muted">${escapeHTML(item.message || "")}</p>
+          <small>Status: <b>${escapeHTML(item.status || "New")}</b></small>
+          ${item.adminReply ? `<p><b>Admin Reply:</b> ${escapeHTML(item.adminReply)}</p>` : ""}
+        </div>
+      `).join("");
+  },error=>{
+    console.error("Feedback history error:",error);
+    box.innerHTML = `<p style="color:#ff8ca0">Could not load feedback history. Check Firestore permissions.</p>`;
+  });
+}
+
+function applySiteSettings(){
+  const featureMap = {
+    generator:"showGenerator",
+    presets:"showPresets",
+    hud:"showHud",
+    practice:"showPractice",
+    feedback:"showFeedback"
+  };
+
+  Object.entries(featureMap).forEach(([id,key])=>{
+    const el=document.querySelector(`[data-feature="${id}"]`);
+    if(el) el.style.display = siteSettings[key] === false ? "none" : "";
+  });
+
+  const banner=document.getElementById("adminAnnouncement");
+  if(banner){
+    banner.textContent=siteSettings.announcement || "";
+    banner.classList.toggle("show",!!siteSettings.announcement);
+  }
+
+  const fbBtn=document.getElementById("feedbackSubmitBtn");
+  if(fbBtn){
+    fbBtn.disabled=!siteSettings.allowFeedback;
+    fbBtn.textContent=siteSettings.allowFeedback ? "🚀 Submit Feedback" : "🔒 Feedback Disabled";
+  }
+
+  const authBtn=document.getElementById("authBtn");
+  if(authBtn) authBtn.style.display=siteSettings.showAuth===false ? "none" : "";
+}
+
+function listenToSiteSettings(){
+  if(settingsUnsubscribe) settingsUnsubscribe();
+  settingsUnsubscribe=onSnapshot(
+    doc(db,"settings","site"),
+    snap=>{
+      if(snap.exists()) siteSettings={...siteSettings,...snap.data()};
+      applySiteSettings();
+    },
+    error=>{
+      console.warn("Site settings unavailable:",error);
+      applySiteSettings();
+    }
+  );
+}
+
+listenToSiteSettings();
+
+
+/* =========================================================
+   PRACTICE
+   ========================================================= */
+
+function renderPractice(){
+
+  const grid =
+    document.getElementById("practiceGrid");
+
+  const key="sensiPractice";
+
+  let done=[];
+
+  try{
+    done=JSON.parse(localStorage.getItem(key)||"[]");
+  }catch(e){}
+
+  grid.innerHTML="";
+
+  for(let i=1;i<=7;i++){
+
+    const d=document.createElement("div");
+
+    d.className =
+      "day "+(done.includes(i)?"done":"");
+
+    d.innerHTML =
+      `<b>Day ${i}</b><br>
+       <small>${done.includes(i)?"✓ Done":"Tap"}</small>`;
+
+    d.onclick=()=>{
+
+      if(done.includes(i)){
+        done=done.filter(x=>x!==i);
+      }else{
+        done.push(i);
+      }
+
+      localStorage.setItem(
+        key,
+        JSON.stringify(done)
+      );
+
+      renderPractice();
+    };
+
+    grid.appendChild(d);
+  }
+}
+
+renderPractice();
+
+</script>
+
+</body>
+</html>
