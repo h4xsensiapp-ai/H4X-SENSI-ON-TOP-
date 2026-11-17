@@ -3,297 +3,433 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DRETAIN C STORE | 24/7 Python Bot Cloud</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>CYBER DEEP CLOUD | Enterprise 24/7 Bot Hosting Matrix</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #070913;
-      --card: rgba(16, 21, 40, 0.75);
-      --border: rgba(0, 240, 255, 0.22);
+      --bg-primary: #03050b;
+      --bg-secondary: rgba(12, 17, 34, 0.75);
+      --bg-glass: rgba(18, 25, 48, 0.65);
+      --border-glow: rgba(0, 240, 255, 0.28);
+      --border-pink: rgba(255, 42, 133, 0.35);
       --cyan: #00f0ff;
+      --cyan-dim: rgba(0, 240, 255, 0.12);
       --pink: #ff2a85;
+      --pink-dim: rgba(255, 42, 133, 0.12);
       --green: #00ff88;
       --red: #ff3b5c;
-      --text: #e6f1ff;
-      --muted: #8892b0;
+      --yellow: #ffcc00;
+      --text-main: #f0f4ff;
+      --text-muted: #8c9bb9;
+      --shadow-neon: 0 0 25px rgba(0, 240, 255, 0.18);
+      --shadow-pink: 0 0 25px rgba(255, 42, 133, 0.18);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     body {
-      background: radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.12), transparent 35%),
-                  radial-gradient(circle at 85% 85%, rgba(255, 42, 133, 0.12), transparent 35%),
-                  var(--bg);
-      color: var(--text);
+      background-color: var(--bg-primary);
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(0, 240, 255, 0.08), transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(255, 42, 133, 0.08), transparent 40%),
+        linear-gradient(rgba(3, 5, 11, 0.9), rgba(3, 5, 11, 0.9)),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300f0ff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      color: var(--text-main);
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
-      padding: 20px;
+      padding: 24px;
+      overflow-x: hidden;
     }
 
-    .container { max-width: 1150px; margin: 0 auto; }
+    .matrix-grid { max-width: 1350px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
 
+    /* Top Navigation Header */
     header {
+      background: var(--bg-secondary);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-glow);
+      border-radius: 20px;
+      padding: 20px 30px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 15px;
-      padding: 18px 24px;
-      background: var(--card);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      margin-bottom: 24px;
-      box-shadow: 0 0 30px rgba(0, 240, 255, 0.08);
+      gap: 20px;
+      box-shadow: var(--shadow-neon);
+      position: relative;
+      overflow: hidden;
     }
 
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand h1 {
-      font-size: 1.35rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, var(--cyan), var(--pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .badge {
-      font-size: 0.72rem;
-      padding: 4px 10px;
-      border-radius: 20px;
-      background: rgba(0, 255, 136, 0.12);
-      color: var(--green);
-      border: 1px solid rgba(0, 255, 136, 0.3);
-      font-weight: 700;
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--pink), var(--green));
     }
 
-    .server-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-    input[type="text"], input[type="password"] {
-      background: rgba(7, 10, 22, 0.9);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 10px 14px;
-      border-radius: 10px;
+    .brand-box { display: flex; align-items: center; gap: 16px; }
+    .brand-logo {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, var(--cyan), var(--pink));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; font-weight: 800; color: #03050b;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    }
+    .brand-info h1 {
+      font-size: 1.5rem; font-weight: 800;
+      background: linear-gradient(90deg, var(--cyan), #fff, var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: 0.8px;
+    }
+    .brand-info p { font-size: 0.78rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+
+    .control-panel-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .input-field {
+      background: rgba(5, 8, 18, 0.9);
+      border: 1px solid var(--border-glow);
+      color: var(--text-main);
+      padding: 11px 16px;
+      border-radius: 12px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.85rem;
       outline: none;
-      transition: 0.2s;
+      transition: all 0.3s ease;
     }
-    input:focus { border-color: var(--cyan); box-shadow: 0 0 12px rgba(0, 240, 255, 0.25); }
+    .input-field:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    }
 
     .btn {
-      padding: 10px 18px;
-      border-radius: 10px;
+      padding: 11px 22px;
+      border-radius: 12px;
       border: none;
       font-weight: 700;
       font-size: 0.85rem;
       cursor: pointer;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex; align-items: center; gap: 8px;
+      text-transform: uppercase; letter-spacing: 0.5px;
     }
-    .btn-cyan { background: linear-gradient(135deg, #00f0ff, #0080ff); color: #050811; }
-    .btn-cyan:hover { box-shadow: 0 0 18px rgba(0, 240, 255, 0.5); transform: translateY(-1px); }
-    .btn-pink { background: linear-gradient(135deg, #ff2a85, #9d00ff); color: #fff; }
-    .btn-pink:hover { box-shadow: 0 0 18px rgba(255, 42, 133, 0.5); transform: translateY(-1px); }
-    .btn-green { background: rgba(0, 255, 136, 0.16); color: var(--green); border: 1px solid rgba(0, 255, 136, 0.4); }
-    .btn-green:hover { background: var(--green); color: #050811; }
-    .btn-red { background: rgba(255, 59, 92, 0.16); color: var(--red); border: 1px solid rgba(255, 59, 92, 0.4); }
+    .btn-cyan { background: linear-gradient(135deg, var(--cyan), #0077ff); color: #03050b; box-shadow: 0 0 15px rgba(0, 240, 255, 0.25); }
+    .btn-cyan:hover { box-shadow: 0 0 25px rgba(0, 240, 255, 0.5); transform: translateY(-2px); }
+    .btn-pink { background: linear-gradient(135deg, var(--pink), #8000ff); color: #fff; box-shadow: 0 0 15px rgba(255, 42, 133, 0.25); }
+    .btn-pink:hover { box-shadow: 0 0 25px rgba(255, 42, 133, 0.5); transform: translateY(-2px); }
+    .btn-green { background: var(--cyan-dim); color: var(--green); border: 1px solid rgba(0, 255, 136, 0.4); }
+    .btn-green:hover { background: var(--green); color: #03050b; }
+    .btn-red { background: var(--pink-dim); color: var(--red); border: 1px solid rgba(255, 59, 92, 0.4); }
     .btn-red:hover { background: var(--red); color: #fff; }
 
-    .grid { display: grid; grid-template-columns: 380px 1fr; gap: 24px; }
-    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
-
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--border);
+    /* Telemetry Stats Bar */
+    .telemetry-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .telemetry-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-glow);
       border-radius: 16px;
-      padding: 22px;
+      padding: 18px 22px;
+      backdrop-filter: blur(16px);
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: var(--shadow-neon);
     }
-    .card h2 {
-      font-size: 1.05rem;
-      margin-bottom: 16px;
+    .telemetry-card .info span { font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+    .telemetry-card .info h3 { font-size: 1.4rem; font-weight: 800; color: var(--cyan); margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+    .telemetry-icon { font-size: 2rem; opacity: 0.8; }
+
+    /* Main Workspace Grid */
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 1024px) { .workspace-grid { grid-template-columns: 1fr; } }
+
+    .glass-card {
+      background: var(--bg-secondary);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-glow);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: var(--shadow-neon);
+      position: relative;
+    }
+    .glass-card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
       color: var(--cyan);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+      padding-bottom: 12px;
     }
 
+    /* Upload Dropzone */
     .dropzone {
       border: 2px dashed rgba(0, 240, 255, 0.35);
-      border-radius: 14px;
-      padding: 28px 16px;
+      border-radius: 16px;
+      padding: 35px 20px;
       text-align: center;
       cursor: pointer;
-      transition: 0.25s;
-      background: rgba(0, 240, 255, 0.03);
-      margin-bottom: 14px;
+      transition: all 0.3s ease;
+      background: rgba(0, 240, 255, 0.02);
+      margin-bottom: 18px;
     }
-    .dropzone:hover { border-color: var(--pink); background: rgba(255, 42, 133, 0.08); }
-    .dropzone p { font-size: 0.9rem; color: var(--text); margin-bottom: 6px; font-weight: 600; }
-    .dropzone span { font-size: 0.76rem; color: var(--muted); }
+    .dropzone:hover, .dropzone.dragover {
+      border-color: var(--pink);
+      background: rgba(255, 42, 133, 0.05);
+      box-shadow: 0 0 20px rgba(255, 42, 133, 0.15);
+    }
+    .dropzone-icon { font-size: 2.5rem; margin-bottom: 10px; }
+    .dropzone p { font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
+    .dropzone span { font-size: 0.78rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
 
-    .form-group { margin-bottom: 14px; }
-    .form-group label { display: block; font-size: 0.78rem; color: var(--muted); margin-bottom: 6px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
     .form-group input { width: 100%; }
 
-    .bot-list { display: flex; flex-direction: column; gap: 12px; }
-    .bot-item {
-      background: rgba(8, 12, 26, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-    .bot-info h3 { font-size: 0.98rem; margin-bottom: 4px; }
-    .bot-meta { font-size: 0.76rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
-    .status-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
-    .running { background: var(--green); box-shadow: 0 0 10px var(--green); }
-    .stopped { background: var(--red); box-shadow: 0 0 10px var(--red); }
-    .bot-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    /* Bot Item List */
+    .bot-container { display: flex; flex-direction: column; gap: 14px; max-height: 480px; overflow-y: auto; padding-right: 4px; }
+    .bot-container::-webkit-scrollbar { width: 6px; }
+    .bot-container::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
+    .bot-container::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 10px; }
 
-    .terminal {
-      background: #04060d;
-      border: 1px solid rgba(0, 240, 255, 0.25);
-      border-radius: 12px;
-      padding: 16px;
+    .bot-card {
+      background: rgba(7, 11, 24, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+      gap: 14px;
+      transition: all 0.3s ease;
+    }
+    .bot-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .bot-meta h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .status-indicator {
+      display: inline-block; width: 10px; height: 10px; border-radius: 50%;
+    }
+    .status-running { background: var(--green); box-shadow: 0 0 12px var(--green); }
+    .status-stopped { background: var(--red); box-shadow: 0 0 12px var(--red); }
+    .bot-details { font-size: 0.78rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+
+    .bot-action-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn-sm { padding: 7px 14px; font-size: 0.75rem; border-radius: 8px; }
+
+    /* Live Terminal Console */
+    .terminal-wrapper { margin-top: 24px; }
+    .terminal-head {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--pink); font-weight: 700;
+    }
+    .terminal-screen {
+      background: #020408;
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      border-radius: 14px;
+      padding: 18px;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
-      color: #a6accd;
-      height: 310px;
+      color: #00ffcc;
+      height: 340px;
       overflow-y: auto;
       white-space: pre-wrap;
-      line-height: 1.55;
-      margin-top: 18px;
+      line-height: 1.6;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
     }
-    .terminal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 20px;
-      font-size: 0.85rem;
-      color: var(--pink);
-      font-weight: 700;
+
+    /* Toast Notification Matrix */
+    .matrix-toast {
+      position: fixed; bottom: 25px; right: 25px;
+      background: rgba(12, 17, 34, 0.95); border: 1px solid var(--cyan);
+      color: #fff; padding: 14px 22px; border-radius: 14px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      display: none; z-index: 9999;
+      animation: slideIn 0.3s ease forwards;
     }
-    .toast {
-      position: fixed; bottom: 20px; right: 20px;
-      background: #10162f; border: 1px solid var(--cyan);
-      color: #fff; padding: 12px 18px; border-radius: 10px;
-      font-size: 0.85rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      display: none; z-index: 999;
-    }
+    @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
   </style>
 </head>
 <body>
 
-<div class="container">
+<div class="matrix-grid">
+  <!-- Top Navigation -->
   <header>
-    <div class="brand">
-      <h1>⚡ DRETAIN C STORE</h1>
-      <span class="badge" id="connStatus">DISCONNECTED</span>
+    <div class="brand-box">
+      <div class="brand-logo">CD</div>
+      <div class="brand-info">
+        <h1>CYBER DEEP CLOUD MATRIX</h1>
+        <p>SECURE 24/7 PYTHON BOT ORCHESTRATION ENGINE</p>
+      </div>
     </div>
-    <div class="server-bar">
-      <input type="text" id="serverUrl" placeholder="Backend Render URL" size="28">
-      <input type="password" id="apiKey" placeholder="Admin Key" size="14">
-      <button class="btn btn-cyan" onclick="connectServer()">Connect Node</button>
+    <div class="control-panel-bar">
+      <input type="text" id="serverUrl" class="input-field" placeholder="Backend URL (e.g. https://xyz.onrender.com)" size="34">
+      <input type="password" id="apiKey" class="input-field" placeholder="Admin Secret Key" size="18">
+      <button class="btn btn-cyan" onclick="connectNode()">Connect Node</button>
+      <span id="connBadge" style="font-family:'JetBrains Mono'; font-size:0.75rem; color:var(--red); font-weight:700;">OFFLINE</span>
     </div>
   </header>
 
-  <div class="grid">
-    <div class="card">
-      <h2>🚀 Deploy New Bot</h2>
-      <div class="dropzone" onclick="document.getElementById('botFile').click()">
-        <p id="fileName">Click or Drop .ZIP / .PY Bot File</p>
-        <span>Auto-extracts ZIP & installs requirements.txt</span>
+  <!-- Telemetry Bar -->
+  <div class="telemetry-bar">
+    <div class="telemetry-card">
+      <div class="info">
+        <span>Active Bots</span>
+        <h3 id="statTotal">0</h3>
+      </div>
+      <div class="telemetry-icon">🤖</div>
+    </div>
+    <div class="telemetry-card">
+      <div class="info">
+        <span>Running Processes</span>
+        <h3 id="statRunning" style="color: var(--green);">0</h3>
+      </div>
+      <div class="telemetry-icon">⚡</div>
+    </div>
+    <div class="telemetry-card">
+      <div class="info">
+        <span>Engine Status</span>
+        <h3 id="statEngine" style="color: var(--yellow);">Standby</h3>
+      </div>
+      <div class="telemetry-icon">🛡️</div>
+    </div>
+    <div class="telemetry-card">
+      <div class="info">
+        <span>Node Protocol</span>
+        <h3 style="color: var(--pink);">HTTPS/WSS</h3>
+      </div>
+      <div class="telemetry-icon">🌐</div>
+    </div>
+  </div>
+
+  <!-- Workspace Grid -->
+  <div class="workspace-grid">
+    <!-- Left Panel: Deploy Module -->
+    <div class="glass-card">
+      <h2>🚀 DEPLOY BOT PACKAGE</h2>
+      <div class="dropzone" id="dropzone" onclick="document.getElementById('botFile').click()">
+        <div class="dropzone-icon">📦</div>
+        <p id="fileNameDisplay">Click or Drop .ZIP / .PY Package</p>
+        <span>Auto-extracts & installs requirements.txt</span>
         <input type="file" id="botFile" accept=".zip,.py" hidden onchange="handleFileSelect(this)">
       </div>
+
       <div class="form-group">
-        <label>Bot Project Name</label>
-        <input type="text" id="botName" placeholder="e.g. telegram-ai-bot">
+        <label>Bot Project Identifier</label>
+        <input type="text" id="botName" class="input-field" placeholder="e.g. cyber_osint_bot">
       </div>
+
       <div class="form-group">
         <label>Main Entry File</label>
-        <input type="text" id="entryFile" value="bot.py" placeholder="bot.py">
+        <input type="text" id="entryFile" class="input-field" value="bot.py" placeholder="bot.py or main.py">
       </div>
-      <button class="btn btn-pink" style="width: 100%; justify-content: center;" onclick="deployBot()">
-        ⚡ Upload & Run 24/7
+
+      <button class="btn btn-pink" style="width: 100%; justify-content: center; padding: 13px;" onclick="deployBot()">
+        ⚡ LAUNCH 24/7 WORKER
       </button>
     </div>
 
-    <div class="card">
+    <!-- Right Panel: Bot Control & Live Terminal -->
+    <div class="glass-card">
       <h2>
-        <span>🤖 Hosted Bots</span>
-        <button class="btn btn-cyan" style="padding: 6px 12px; font-size: 0.75rem;" onclick="fetchBots()">↻ Refresh</button>
+        <span>🤖 ACTIVE DEPLOYED NODES</span>
+        <button class="btn btn-cyan btn-sm" onclick="fetchBots()">↻ Sync Nodes</button>
       </h2>
-      <div class="bot-list" id="botList">
-        <div style="color: var(--muted); font-size: 0.85rem;">Connect your backend server URL above to manage live bots.</div>
+
+      <div class="bot-container" id="botListContainer">
+        <div style="color: var(--text-muted); font-family: 'JetBrains Mono'; font-size: 0.85rem; text-align: center; padding: 40px;">
+          Connect your 24/7 backend node above to view and manage your bots.
+        </div>
       </div>
-      <div class="terminal-header">
-        <span id="consoleTitle">📟 LIVE BOT TERMINAL</span>
-        <button class="btn btn-red" style="padding: 4px 10px; font-size: 0.72rem;" onclick="stopLogPolling()">Stop Stream</button>
+
+      <div class="terminal-wrapper">
+        <div class="terminal-head">
+          <span id="consoleTitle">📟 SECURE LOG STREAM: NONE</span>
+          <button class="btn btn-red btn-sm" onclick="stopStream()">Kill Stream</button>
+        </div>
+        <div class="terminal-screen" id="terminalOutput">CYBER DEEP CLOUD TERMINAL v4.2 • WAITING FOR CONNECTION...</div>
       </div>
-      <div class="terminal" id="terminalOutput">Waiting for server connection...</div>
     </div>
   </div>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="matrix-toast" id="matrixToast"></div>
 
 <script>
-  let logInterval = null;
-  let activeLogBot = null;
+  let logStreamInterval = null;
+  let activeStreamBot = null;
 
   window.onload = () => {
-    const savedUrl = localStorage.getItem('bot_server_url');
-    const savedKey = localStorage.getItem('bot_api_key');
+    const savedUrl = localStorage.getItem('cyber_server_url');
+    const savedKey = localStorage.getItem('cyber_api_key');
     if (savedUrl) document.getElementById('serverUrl').value = savedUrl;
     if (savedKey) document.getElementById('apiKey').value = savedKey;
-    if (savedUrl && savedKey) connectServer();
+    if (savedUrl && savedKey) connectNode();
   };
 
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.innerText = msg;
+  function showToast(message) {
+    const t = document.getElementById('matrixToast');
+    t.innerText = message;
     t.style.display = 'block';
     setTimeout(() => t.style.display = 'none', 3500);
   }
 
-  function getHeaders() { return { 'X-API-Key': document.getElementById('apiKey').value.trim() }; }
   function getBaseUrl() { return document.getElementById('serverUrl').value.trim().replace(/\/$/, ''); }
+  function getHeaders() { return { 'X-API-Key': document.getElementById('apiKey').value.trim() }; }
 
   function handleFileSelect(input) {
     if (input.files && input.files[0]) {
       const file = input.files[0];
-      document.getElementById('fileName').innerText = "📦 Selected: " + file.name;
+      document.getElementById('fileNameDisplay').innerText = "📦 Selected: " + file.name;
       if (!document.getElementById('botName').value) {
         document.getElementById('botName').value = file.name.replace(/\.(zip|py)$/i, '').replace(/[^a-zA-Z0-9_-]/g, '_');
       }
-      if (file.name.endsWith('.py')) document.getElementById('entryFile').value = file.name;
+      if (file.name.endsWith('.py')) {
+        document.getElementById('entryFile').value = file.name;
+      }
     }
   }
 
-  async function connectServer() {
+  // Drag and drop events
+  const dz = document.getElementById('dropzone');
+  ['dragenter', 'dragover'].forEach(name => dz.addEventListener(name, e => { e.preventDefault(); dz.classList.add('dragover'); }));
+  ['dragleave', 'drop'].forEach(name => dz.addEventListener(name, e => { e.preventDefault(); dz.classList.remove('dragover'); }));
+  dz.addEventListener('drop', e => {
+    if (e.dataTransfer.files.length) {
+      document.getElementById('botFile').files = e.dataTransfer.files;
+      handleFileSelect(document.getElementById('botFile'));
+    }
+  });
+
+  async function connectNode() {
     const url = getBaseUrl();
     const key = document.getElementById('apiKey').value.trim();
-    if (!url || !key) return showToast("Enter Backend URL & Key!");
-    localStorage.setItem('bot_server_url', url);
-    localStorage.setItem('bot_api_key', key);
+    if (!url || !key) return showToast("ERROR: Enter Backend URL and Secret Key!");
+
+    localStorage.setItem('cyber_server_url', url);
+    localStorage.setItem('cyber_api_key', key);
 
     try {
       const res = await fetch(`${url}/api/status`, { headers: getHeaders() });
+      const data = await res.json();
       if (res.ok) {
-        document.getElementById('connStatus').innerText = "ONLINE • 24/7";
-        document.getElementById('connStatus').style.color = "#00ff88";
-        showToast("Connected Successfully!");
+        document.getElementById('connBadge').innerText = "ONLINE • 24/7";
+        document.getElementById('connBadge').style.color = "var(--green)";
+        document.getElementById('statEngine').innerText = "Active";
+        showToast("Connected Successfully to Backend Matrix!");
         fetchBots();
       } else {
-        showToast("Invalid API Key!");
+        showToast("AUTH ERROR: Invalid Secret Key!");
       }
     } catch (e) {
-      showToast("Server unreachable!");
+      showToast("NETWORK ERROR: Server unreachable or CORS blocked!");
     }
   }
 
@@ -302,15 +438,18 @@
     const fileInput = document.getElementById('botFile');
     const botName = document.getElementById('botName').value.trim();
     const entryFile = document.getElementById('entryFile').value.trim();
-    if (!fileInput.files[0] || !botName || !entryFile) return showToast("Select file & fill details!");
+
+    if (!fileInput.files[0] || !botName || !entryFile) {
+      return showToast("ERROR: Select file, provide bot name & entry file!");
+    }
 
     const formData = new FormData();
     formData.append('file', fileInput.files[0]);
     formData.append('bot_name', botName);
     formData.append('entry_file', entryFile);
 
-    showToast("Uploading & installing dependencies...");
-    document.getElementById('terminalOutput').innerText = `[SYSTEM] Uploading & running dependencies...`;
+    showToast("Deploying package & installing dependencies...");
+    document.getElementById('terminalOutput').innerText = `[MATRIX] Uploading ${fileInput.files[0].name}...\n[MATRIX] Running pip install and initializing worker process...`;
 
     try {
       const res = await fetch(`${url}/api/deploy`, { method: 'POST', headers: getHeaders(), body: formData });
@@ -318,12 +457,13 @@
       if (res.ok) {
         showToast(data.message);
         fetchBots();
-        viewLogs(botName);
+        streamLogs(botName);
       } else {
-        showToast("Error: " + data.error);
+        showToast("DEPLOY FAILED: " + data.error);
+        document.getElementById('terminalOutput').innerText = `[ERROR] ${data.error}`;
       }
     } catch (e) {
-      showToast("Upload failed!");
+      showToast("DEPLOY FAILED: Network transmission error.");
     }
   }
 
@@ -332,28 +472,40 @@
     try {
       const res = await fetch(`${url}/api/bots`, { headers: getHeaders() });
       const data = await res.json();
-      const list = document.getElementById('botList');
-      list.innerHTML = '';
+      const container = document.getElementById('botListContainer');
+      container.innerHTML = '';
+
       if (!data.bots || data.bots.length === 0) {
-        list.innerHTML = `<div style="color: var(--muted); font-size: 0.85rem;">No bots deployed yet.</div>`;
+        container.innerHTML = `<div style="color: var(--text-muted); font-family: 'JetBrains Mono'; font-size: 0.85rem; text-align: center; padding: 40px;">No bots deployed. Upload a package to begin.</div>`;
+        document.getElementById('statTotal').innerText = "0";
+        document.getElementById('statRunning').innerText = "0";
         return;
       }
+
+      let runningCount = 0;
       data.bots.forEach(bot => {
         const isRunning = bot.status === 'running';
-        list.innerHTML += `
-          <div class="bot-item">
-            <div class="bot-info">
-              <h3><span class="status-dot ${isRunning ? 'running' : 'stopped'}"></span>${bot.name}</h3>
-              <div class="bot-meta">Entry: ${bot.entry} | Status: ${bot.status.toUpperCase()}</div>
+        if (isRunning) runningCount++;
+        container.innerHTML += `
+          <div class="bot-card">
+            <div class="bot-meta">
+              <h3><span class="status-indicator ${isRunning ? 'status-running' : 'status-stopped'}"></span>${bot.name}</h3>
+              <div class="bot-details">Entry: ${bot.entry} | Status: ${bot.status.toUpperCase()}</div>
             </div>
-            <div class="bot-actions">
-              ${isRunning ? `<button class="btn btn-red" onclick="controlBot('${bot.name}', 'stop')">Stop</button>` : `<button class="btn btn-green" onclick="controlBot('${bot.name}', 'start')">Start</button>`}
-              <button class="btn btn-cyan" onclick="viewLogs('${bot.name}')">Logs</button>
-              <button class="btn btn-red" onclick="deleteBot('${bot.name}')">Delete</button>
+            <div class="bot-action-group">
+              ${isRunning 
+                ? `<button class="btn btn-red btn-sm" onclick="controlBot('${bot.name}', 'stop')">Stop</button>` 
+                : `<button class="btn btn-green btn-sm" onclick="controlBot('${bot.name}', 'start')">Start</button>`
+              }
+              <button class="btn btn-cyan btn-sm" onclick="streamLogs('${bot.name}')">Logs</button>
+              <button class="btn btn-red btn-sm" onclick="deleteBot('${bot.name}')">Del</button>
             </div>
           </div>
         `;
       });
+
+      document.getElementById('statTotal').innerText = data.bots.length;
+      document.getElementById('statRunning').innerText = runningCount;
     } catch (e) {}
   }
 
@@ -362,37 +514,39 @@
     const data = await res.json();
     showToast(data.message || data.error);
     fetchBots();
-    if (action === 'start') viewLogs(name);
+    if (action === 'start') streamLogs(name);
   }
 
   async function deleteBot(name) {
-    if (!confirm(`Delete ${name}?`)) return;
+    if (!confirm(`Permanently terminate node ${name}?`)) return;
     await fetch(`${getBaseUrl()}/api/bots/${name}`, { method: 'DELETE', headers: getHeaders() });
-    if (activeLogBot === name) stopLogPolling();
+    if (activeStreamBot === name) stopStream();
     fetchBots();
   }
 
-  function viewLogs(name) {
-    activeLogBot = name;
-    document.getElementById('consoleTitle').innerText = `📟 LOGS: ${name}`;
-    if (logInterval) clearInterval(logInterval);
-    const fetchLog = async () => {
+  function streamLogs(name) {
+    activeStreamBot = name;
+    document.getElementById('consoleTitle').innerText = `📟 LOG STREAM: ${name}`;
+    if (logStreamInterval) clearInterval(logStreamInterval);
+
+    const pullLog = async () => {
       try {
         const res = await fetch(`${getBaseUrl()}/api/bots/${name}/logs`, { headers: getHeaders() });
         const data = await res.json();
-        const term = document.getElementById('terminalOutput');
-        term.innerText = data.logs || "No logs...";
-        term.scrollTop = term.scrollHeight;
+        const screen = document.getElementById('terminalOutput');
+        screen.innerText = data.logs || "No log output recorded yet...";
+        screen.scrollTop = screen.scrollHeight;
       } catch (e) {}
     };
-    fetchLog();
-    logInterval = setInterval(fetchLog, 2500);
+
+    pullLog();
+    logStreamInterval = setInterval(pullLog, 2000);
   }
 
-  function stopLogPolling() {
-    if (logInterval) clearInterval(logInterval);
-    activeLogBot = null;
-    document.getElementById('consoleTitle').innerText = `📟 LIVE BOT TERMINAL`;
+  function stopStream() {
+    if (logStreamInterval) clearInterval(logStreamInterval);
+    activeStreamBot = null;
+    document.getElementById('consoleTitle').innerText = `📟 SECURE LOG STREAM: NONE`;
   }
 </script>
 </body>
