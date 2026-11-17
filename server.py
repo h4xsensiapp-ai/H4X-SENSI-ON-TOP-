@@ -50,7 +50,7 @@ def start_bot_process(bot_name):
     bot_info = state[bot_name]
     bot_dir = os.path.join(BASE_DIR, bot_name)
     work_dir, entry_file = find_entry_path(bot_dir, bot_info["entry"])
-    if not work_dir: return False, "Entry file not found"
+    if not work_dir: return False, "Entry file missing"
 
     log_path = os.path.join(bot_dir, "bot.log")
     log_file = open(log_path, "a", buffering=1, encoding="utf-8", errors="ignore")
@@ -93,7 +93,7 @@ def status():
 @app.route("/api/deploy", methods=["POST"])
 def deploy():
     if not check_auth(): return jsonify({"error": "Unauthorized"}), 401
-    if "file" not in request.files: return jsonify({"error": "No file"}), 400
+    if "file" not in request.files: return jsonify({"error": "No file uploaded"}), 400
     
     file = request.files["file"]
     bot_name = request.form.get("bot_name", "").strip()
@@ -148,9 +148,9 @@ def api_stop(bot_name):
 def api_logs(bot_name):
     if not check_auth(): return jsonify({"error": "Unauthorized"}), 401
     log_path = os.path.join(BASE_DIR, bot_name, "bot.log")
-    if not os.path.exists(log_path): return jsonify({"logs": "No logs yet."})
+    if not os.path.exists(log_path): return jsonify({"logs": "No logs recorded yet."})
     with open(log_path, "r", encoding="utf-8", errors="ignore") as f:
-        return jsonify({"logs": "".join(f.readlines()[-100:])})
+        return jsonify({"logs": "".join(f.readlines()[-120:])})
 
 @app.route("/api/bots/<bot_name>", methods=["DELETE"])
 def api_delete(bot_name):
@@ -160,7 +160,7 @@ def api_delete(bot_name):
     state.pop(bot_name, None)
     save_state(state)
     shutil.rmtree(os.path.join(BASE_DIR, bot_name), ignore_errors=True)
-    return jsonify({"message": "Deleted"})
+    return jsonify({"message": "Node terminated permanently."})
 
 if __name__ == "__main__":
     threading.Thread(target=watchdog_loop, daemon=True).start()
